@@ -39,7 +39,7 @@ export class ProductsService {
       status: ['', '', '', 'sale'][Math.floor(Math.random() * 4)],
       discounted: ['', '', '', 'discounted'][Math.floor(Math.random() * 4)],
       discount: parseFloat((Math.random() * (0.0 - 10.0) + 10.0).toFixed(2)),
-      name: ['Coffee'][Math.floor(Math.random() * 1)],
+      name: ['cafe'][Math.floor(Math.random() * 1)],
       description: ['B & W', 'Grey', 'Black', 'Green', 'Black'][Math.floor(Math.random() * 5)],
       image: `${i}`
     });

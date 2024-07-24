@@ -1,9 +1,9 @@
 <mat-card>
-  <mat-toolbar color="primary">Product Details</mat-toolbar>
+  <mat-toolbar color="primary">Detalhe do produto</mat-toolbar>
   <mat-card-content>
     <form [formGroup]="form" class="min-width">
       <mat-form-field class="full-width">
-        <mat-label>Name</mat-label>
+        <mat-label>Nome</mat-label>
         <input matInput formControlName="name" #name />
         <mat-hint align="end">{{ name.value.length }} / 100</mat-hint>
         @if (form.get('name')?.invalid) {
@@ -14,7 +14,7 @@
       </mat-form-field>
 
       <mat-form-field class="full-width">
-        <mat-label>Description</mat-label>
+        <mat-label>Descrição do produto</mat-label>
         <input matInput formControlName="description" #description />
         <mat-hint align="end">{{ description.value.length }} / 100</mat-hint>
         @if (form.get('description')?.invalid) {
@@ -26,33 +26,31 @@
 
       <div class="row">
         <mat-form-field class="column">
-          <mat-label>Price</mat-label>
+          <mat-label>Preço</mat-label>
           <input matInput formControlName="price" type="number" />
           @if (form.get('price')?.invalid) {
-<mat-error>{{
-            formUtils.getErrorMessage(form, "price")
-          }}</mat-error>
-}
+              <mat-error>{{formUtils.getErrorMessage(form, "price")}}</mat-error>
+          }
         </mat-form-field>
 
         <mat-form-field class="column">
           <mat-label>Status</mat-label>
           <mat-select formControlName="status">
-            <mat-option value="">Default</mat-option>
-            <mat-option value="sale">Sale</mat-option>
+            <mat-option value="">Sem desconto</mat-option>
+            <mat-option value="oferta">Com desconto</mat-option>
           </mat-select>
         </mat-form-field>
 
         <mat-form-field class="column">
-          <mat-label>Discounted</mat-label>
+          <mat-label>Com Desconto</mat-label>
           <mat-select formControlName="discounted">
-            <mat-option value="">No</mat-option>
-            <mat-option value="discounted">Yes</mat-option>
+            <mat-option value="">Não</mat-option>
+            <mat-option value="discounted">Sim</mat-option>
           </mat-select>
         </mat-form-field>
 
         <mat-form-field class="column">
-          <mat-label>Discount</mat-label>
+          <mat-label>Valor do desconto</mat-label>
           <input matInput formControlName="discount" type="number" />
           @if (form.get('discount')?.invalid) {
 <mat-error>{{
@@ -92,15 +90,23 @@
       (click)="onSubmit()"
       type="submit"
     >
-      Save
+      Salvar
     </button>
     <button
       mat-raised-button
       (click)="onCancel()"
+      color="warn"
       class="btn-space"
       type="button"
     >
-      Cancel
+      Cancelar
     </button>
+
+    <!-- Criar um botão para voltar para lista de produtos no canto direito da tela -->
+     <button class="alinha-direita" mat-raised-button color="accent" (click)="voltar()">
+      Voltar
+    </button>
+
   </mat-card-actions>
+
 </mat-card>
